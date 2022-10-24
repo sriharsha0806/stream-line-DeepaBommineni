@@ -1,4 +1,4 @@
-#include <sender.hpp>
+#include "sender.hpp"
 
 int main() {
 	generateSamples(tempSensorSample);
