@@ -17,12 +17,15 @@ jobs:
 
     - name: build
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o testchecker sender_test.cpp sender.cpp
-      
-    - name: run
-      run: ./testchecker
+     
+    - name: streamline final
+      run: |
+      export PYTHONPATH=$PWD
+      ./testchecker | python Receiver/Receiver.py
 
     - name: collect coverage
       run: gcovr --gcov-exclude=".*test.*" -r . --html --html-details -o coverage.html --print-summary
+
 
     - name: create coverage artifact
       uses: actions/upload-artifact@v2
